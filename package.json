@@ -10,6 +10,9 @@
     "prepare": "husky install",
     "lint": "eslint . --ext .vue,.js,.jsx,.ts,.tsx src --fix"
   },
+  "lint-staged": {
+    "*.{js,tsx,vue,ts,jsx}": "eslint --fix"
+  },
   "dependencies": {
     "@vueuse/core": "^10.4.1",
     "pinia": "^2.1.6",
