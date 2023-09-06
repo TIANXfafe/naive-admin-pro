@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LayoutContent, LayoutSider, Logo, Title } from '@/layout/common'
+import { Layout, LayoutContent, LayoutSider, Logo, Title } from '@/layout/common'
 const props = withDefaults(defineProps<{
   headerHeight?: number
   logo?: string
@@ -16,7 +16,6 @@ const props = withDefaults(defineProps<{
 })
 defineEmits(['update:collapsed'])
 const headerHeightVar = computed(() => `${props.headerHeight}px`)
-const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
 </script>
 
 <template>
@@ -34,7 +33,7 @@ const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
         <Title v-if="!collapsed" :title="title" :size="22" />
       </div>
     </LayoutSider>
-    <n-layout style="--n-color: var(--pro-admin-layout-content-bg)">
+    <Layout>
       <n-layout-header class="pro-admin-mix-layout-header flex items-center px-4 justify-between">
         <slot name="headerLeft">
           <div />
@@ -44,15 +43,12 @@ const contentHeightVar = computed(() => `calc(100vh - ${props.headerHeight}px)`)
       <LayoutContent content-style="padding: 24px;">
         <slot />
       </LayoutContent>
-    </n-layout>
+    </Layout>
   </n-layout>
 </template>
 
 <style scoped>
 .pro-admin-mix-layout-header {
   height: v-bind(headerHeightVar);
-}
-.pro-admin-mix-layout-content {
-  height: v-bind(contentHeightVar);
 }
 </style>

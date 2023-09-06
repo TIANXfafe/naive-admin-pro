@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MixLayout from '../mixLayout/index.vue'
 import SideLayout from '../sideLayout/index.vue'
+import TopLayout from '../topLayout/index.vue'
 
 const appStore = useAppStore()
 const { layout } = storeToRefs(appStore)
@@ -34,4 +35,13 @@ const { layout } = storeToRefs(appStore)
       <div>右侧</div>
     </template>
   </SideLayout>
+  <TopLayout
+    v-else-if="layout.layout === 'top'"
+    :logo="layout.logo"
+    :title="layout.title"
+  >
+    <template #headerRight>
+      <div>右侧</div>
+    </template>
+  </TopLayout>
 </template>
