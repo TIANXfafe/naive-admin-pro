@@ -4,6 +4,7 @@ import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import router from '@/router'
+import '@/assets/styles/index.css'
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
