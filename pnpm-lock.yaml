@@ -27,6 +27,9 @@ devDependencies:
   '@unocss/reset':
     specifier: ^0.55.7
     version: registry.npmmirror.com/@unocss/reset@0.55.7
+  '@vicons/antd':
+    specifier: ^0.12.0
+    version: registry.npmmirror.com/@vicons/antd@0.12.0
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: registry.npmmirror.com/@vitejs/plugin-vue@4.2.3(vite@4.4.5)(vue@3.3.4)
@@ -1194,6 +1197,12 @@ packages:
       vite: registry.npmmirror.com/vite@4.4.5(@types/node@20.5.9)
     transitivePeerDependencies:
       - rollup
+    dev: true
+
+  registry.npmmirror.com/@vicons/antd@0.12.0:
+    resolution: {integrity: sha512-C0p6aO1EmGG1QHrqgUWQS1No20934OdWSRQshM5NIDK5H1On6tC26U0hT6Rmp40KfUsvhvX5YW8BoWJdNFifPg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/antd/-/antd-0.12.0.tgz}
+    name: '@vicons/antd'
+    version: 0.12.0
     dev: true
 
   registry.npmmirror.com/@vitejs/plugin-vue@4.2.3(vite@4.4.5)(vue@3.3.4):
