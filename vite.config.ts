@@ -11,6 +11,10 @@ const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    __VUE_I18N_FULL_INSTALL__: false,
+    __VUE_I18N_LEGACY_API__: false,
+  },
   plugins: [
     ReactivityTransform(),
     vue({

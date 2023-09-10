@@ -1,24 +1,19 @@
 <script setup lang="ts">
-const appStore = useAppStore()
-const onSwitch = (theme: any) => {
-  if (theme === 'dark')
-    document.documentElement.className = 'dark'
-
-  else
-    document.documentElement.removeAttribute('class')
-
-  appStore.updateLayoutStyle(theme)
+const appLocale = useAppLocale()
+const onSwitch = (lang: string) => {
+  appLocale.value = lang
 }
 </script>
 
 <template>
   <div>
     <n-space>
-      <n-button @click="onSwitch('light')">
-        浅色
+      <n-input />
+      <n-button @click="onSwitch('zh')">
+        中文
       </n-button>
-      <n-button @click="onSwitch('dark')">
-        深色
+      <n-button @click="onSwitch('en')">
+        English
       </n-button>
     </n-space>
   </div>

@@ -54,13 +54,13 @@ const cssVars = computed(() => {
   </teleport>
   <n-drawer v-model:show="showRef" :width="drawerWidth">
     <n-drawer-content>
-      <Container v-if="layoutStyleList" title="风格配置">
+      <Container v-if="layoutStyleList" :title="$t('global.layout.setting.drawer.style')">
         <n-space size="large">
           <template v-for="item in layoutStyleList" :key="item.id">
             <CheckboxLayout
               :layout="item.key"
               :checked="item.id === layoutStyle"
-              :title="item.title"
+              :title="$t(item.title)"
               :inverted="item.inverted"
               :dark="item.dark"
               @click="() => $emit('update:layoutStyle', item.id)"
@@ -69,25 +69,26 @@ const cssVars = computed(() => {
         </n-space>
       </Container>
       <n-divider />
-      <Container v-if="themeList" title="主题色配置">
+      <Container v-if="themeList" :title="$t('global.layout.setting.drawer.theme')">
         <n-space>
           <CheckboxTheme
             v-for="item in themeList"
             :key="item.key"
             :color="item.color"
+            :title="$t(item.title)"
             :checked="item.key === theme"
             @click="() => $emit('update:theme', item.key)"
           />
         </n-space>
       </Container>
       <n-divider />
-      <Container v-if="layoutList" title="导航模式">
+      <Container v-if="layoutList" :title="$t('global.layout.setting.drawer.layout')">
         <n-space size="large">
           <template v-for="item in layoutList" :key="item.key">
             <CheckboxLayout
               :layout="item.key"
               :checked="item.key === layout"
-              :title="item.title"
+              :title="$t(item.title)"
               @click="() => $emit('update:layout', item.key)"
             />
           </template>

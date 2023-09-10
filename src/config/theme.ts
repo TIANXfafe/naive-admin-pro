@@ -3,6 +3,7 @@ import type { GlobalThemeOverrides } from 'naive-ui'
 export interface ITheme {
   color: string
   key: string
+  title: string
 }
 
 export const colors: Record<string, GlobalThemeOverrides> = {
