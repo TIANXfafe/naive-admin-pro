@@ -3,6 +3,7 @@ import MixLayout from '../mixLayout/index.vue'
 import SideLayout from '../sideLayout/index.vue'
 import TopLayout from '../topLayout/index.vue'
 import MobileLayout from '../mobileLayout/index.vue'
+import SettingDrawer from '../settingDrawer/index.vue'
 
 const appStore = useAppStore()
 const { layout, visible } = storeToRefs(appStore)
@@ -68,4 +69,5 @@ watchEffect(() => {
       </template>
     </TopLayout>
   </template>
+  <SettingDrawer v-model:layout="layout.layout" />
 </template>

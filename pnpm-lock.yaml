@@ -33,6 +33,9 @@ devDependencies:
   '@vitejs/plugin-vue':
     specifier: ^4.2.3
     version: registry.npmmirror.com/@vitejs/plugin-vue@4.2.3(vite@4.4.5)(vue@3.3.4)
+  '@vue-macros/reactivity-transform':
+    specifier: ^0.3.22
+    version: registry.npmmirror.com/@vue-macros/reactivity-transform@0.3.22(vue@3.3.4)
   eslint:
     specifier: ^8.48.0
     version: registry.npmmirror.com/eslint@8.48.0
@@ -1243,6 +1246,49 @@ packages:
       '@volar/language-core': registry.npmmirror.com/@volar/language-core@1.9.2
     dev: true
 
+  registry.npmmirror.com/@vue-macros/common@1.7.2(vue@3.3.4):
+    resolution: {integrity: sha512-0/2A4kWLTCNEx+DDQKLvs7zXpfjgAbGBZ58SIvDN1DjGXhG4WaIUZtgMqzA6bvc5dNN7RaOatZYubkVumwmjWA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue-macros/common/-/common-1.7.2.tgz}
+    id: registry.npmmirror.com/@vue-macros/common/1.7.2
+    name: '@vue-macros/common'
+    version: 1.7.2
+    engines: {node: '>=16.14.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    peerDependenciesMeta:
+      vue:
+        optional: true
+    dependencies:
+      '@babel/types': registry.npmmirror.com/@babel/types@7.22.15
+      '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils@5.0.4
+      '@vue/compiler-sfc': registry.npmmirror.com/@vue/compiler-sfc@3.3.4
+      ast-kit: registry.npmmirror.com/ast-kit@0.10.0
+      local-pkg: registry.npmmirror.com/local-pkg@0.4.3
+      magic-string-ast: registry.npmmirror.com/magic-string-ast@0.3.0
+      vue: registry.npmmirror.com/vue@3.3.4
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  registry.npmmirror.com/@vue-macros/reactivity-transform@0.3.22(vue@3.3.4):
+    resolution: {integrity: sha512-NATQkkWBCI8S908gSgU0bbtP+jZJj0PQbwJY4QTqvXDtDljc7vVZouP2/dVrHDgeTkpKbBFj8NOC3NIso9V+zA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue-macros/reactivity-transform/-/reactivity-transform-0.3.22.tgz}
+    id: registry.npmmirror.com/@vue-macros/reactivity-transform/0.3.22
+    name: '@vue-macros/reactivity-transform'
+    version: 0.3.22
+    engines: {node: '>=16.14.0'}
+    peerDependencies:
+      vue: ^2.7.0 || ^3.2.25
+    dependencies:
+      '@babel/parser': registry.npmmirror.com/@babel/parser@7.22.15
+      '@vue-macros/common': registry.npmmirror.com/@vue-macros/common@1.7.2(vue@3.3.4)
+      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core@3.3.4
+      '@vue/shared': registry.npmmirror.com/@vue/shared@3.3.4
+      magic-string: registry.npmmirror.com/magic-string@0.30.3
+      unplugin: registry.npmmirror.com/unplugin@1.4.0
+      vue: registry.npmmirror.com/vue@3.3.4
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
   registry.npmmirror.com/@vue/compiler-core@3.3.4:
     resolution: {integrity: sha512-cquyDNvZ6jTbf/+x+AgM2Arrp6G4Dzbb0R64jiG804HRMfRiFXWI6kqUVqZ6ZR0bQhIoQjB4+2bhNtVwndW15g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-core/-/compiler-core-3.3.4.tgz}
     name: '@vue/compiler-core'
@@ -1579,6 +1625,19 @@ packages:
       get-intrinsic: registry.npmmirror.com/get-intrinsic@1.2.1
       is-array-buffer: registry.npmmirror.com/is-array-buffer@3.0.2
       is-shared-array-buffer: registry.npmmirror.com/is-shared-array-buffer@1.0.2
+    dev: true
+
+  registry.npmmirror.com/ast-kit@0.10.0:
+    resolution: {integrity: sha512-8y01XClpURgvxTJmM4AY2oHa1B/6iysALB9yJM1j4ak3Z2ZsnU0ewjDZzqOHdbNdit6hC0DGZNrBqNuCrv51fQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ast-kit/-/ast-kit-0.10.0.tgz}
+    name: ast-kit
+    version: 0.10.0
+    engines: {node: '>=16.14.0'}
+    dependencies:
+      '@babel/parser': registry.npmmirror.com/@babel/parser@7.22.15
+      '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils@5.0.4
+      pathe: registry.npmmirror.com/pathe@1.1.1
+    transitivePeerDependencies:
+      - rollup
     dev: true
 
   registry.npmmirror.com/async-validator@4.2.5:
@@ -3531,6 +3590,15 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: registry.npmmirror.com/yallist@4.0.0
+    dev: true
+
+  registry.npmmirror.com/magic-string-ast@0.3.0:
+    resolution: {integrity: sha512-0shqecEPgdFpnI3AP90epXyxZy9g6CRZ+SZ7BcqFwYmtFEnZ1jpevcV5HoyVnlDS9gCnc1UIg3Rsvp3Ci7r8OA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/magic-string-ast/-/magic-string-ast-0.3.0.tgz}
+    name: magic-string-ast
+    version: 0.3.0
+    engines: {node: '>=16.14.0'}
+    dependencies:
+      magic-string: registry.npmmirror.com/magic-string@0.30.3
     dev: true
 
   registry.npmmirror.com/magic-string@0.30.3:

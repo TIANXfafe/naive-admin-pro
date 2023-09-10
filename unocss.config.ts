@@ -1,6 +1,13 @@
 import { defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, presetWebFonts, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
+  safelist: [
+    'bg-[var(--inverted-color)]',
+    'bg-[var(--base-color)]',
+    'h-75%',
+    'h-100%',
+    'bottom-0',
+  ],
   shortcuts: [],
   presets: [
     presetUno(),

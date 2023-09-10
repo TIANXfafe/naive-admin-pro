@@ -5,12 +5,14 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
+import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    ReactivityTransform(),
     vue({
       reactivityTransform: true,
     }),
