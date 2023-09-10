@@ -1,7 +1,7 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   src?: string
-  size?: number
+  size?: number | string
 }>(), {
   size: 24,
 })

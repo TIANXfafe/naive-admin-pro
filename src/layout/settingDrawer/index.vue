@@ -2,29 +2,22 @@
 import { CloseOutlined, SettingOutlined } from '@vicons/antd'
 import CheckboxLayout from './checkboxLayout.vue'
 import Container from './container.vue'
+import type { ILayoutType } from '@/config/layout-theme'
 
 const props = withDefaults(defineProps<{
   floatTop?: number | string
   drawerWidth?: number | string
   layout?: 'mix' | 'side' | 'top'
+  layoutStyle?: 'dark' | 'light'
+  layoutList: ILayoutType[]
+  layoutStyleList: ILayoutType[]
 }>(), {
   floatTop: 240,
   drawerWidth: 300,
 })
-defineEmits(['update:layout'])
+defineEmits(['update:layout', 'update:layoutStyle'])
 
 let showRef = $ref(false)
-
-const layoutRef = $ref([{
-  key: 'mix',
-  title: '混合布局',
-}, {
-  key: 'side',
-  title: '侧边布局',
-}, {
-  key: 'top',
-  title: '顶部布局',
-}])
 
 const handleClick = (value: boolean) => {
   showRef = value
@@ -57,9 +50,22 @@ const cssVars = computed(() => {
   </teleport>
   <n-drawer v-model:show="showRef" :width="drawerWidth">
     <n-drawer-content>
-      <Container title="导航模式">
+      <Container v-if="layoutStyleList" title="风格配置">
         <n-space size="large">
-          <template v-for="item in layoutRef" :key="item.key">
+          <template v-for="item in layoutStyleList" :key="item.id">
+            <CheckboxLayout
+              :layout="item.key"
+              :checked="item.id === layoutStyle"
+              :title="item.title"
+              :inverted="item.inverted"
+              @click="() => $emit('update:layoutStyle', item.id)"
+            />
+          </template>
+        </n-space>
+      </Container>
+      <Container v-if="layoutList" title="导航模式">
+        <n-space size="large">
+          <template v-for="item in layoutList" :key="item.key">
             <CheckboxLayout
               :layout="item.key"
               :checked="item.key === layout"

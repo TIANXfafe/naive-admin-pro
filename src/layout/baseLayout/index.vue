@@ -6,7 +6,7 @@ import MobileLayout from '../mobileLayout/index.vue'
 import SettingDrawer from '../settingDrawer/index.vue'
 
 const appStore = useAppStore()
-const { layout, visible } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList } = storeToRefs(appStore)
 const { isMobile, isPad, isDesktop } = useQueryBreakpoints()
 
 watchEffect(() => {
@@ -54,6 +54,7 @@ watchEffect(() => {
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
       :show-sider-trigger="layout.showSiderTrigger"
+      :inverted="layout.layoutStyle === 'dark'"
     >
       <template #headerRight>
         <div>右侧</div>
@@ -63,11 +64,17 @@ watchEffect(() => {
       v-else-if="layout.layout === 'top'"
       :logo="layout.logo"
       :title="layout.title"
+      :inverted="layout.layoutStyle === 'dark'"
     >
       <template #headerRight>
         <div>右侧</div>
       </template>
     </TopLayout>
   </template>
-  <SettingDrawer v-model:layout="layout.layout" />
+  <SettingDrawer
+    v-model:layout="layout.layout"
+    v-model:layout-style="layout.layoutStyle"
+    :layout-list="layoutList"
+    :layout-style-list="layoutStyleList"
+  />
 </template>

@@ -1,8 +1,16 @@
 import logo from '@/assets/vue.svg'
 
-export interface layoutTheme {
+export interface ILayoutType {
+  id?: string
+  key: 'mix' | 'side' | 'top'
+  title: string
+  inverted?: boolean
+}
+
+export interface ILayoutTheme {
   title?: string
   layout: 'mix' | 'side' | 'top'
+  layoutStyle: 'light' | 'dark'
   headerHeight: number
   logo?: string
   siderWidth: number
@@ -11,9 +19,10 @@ export interface layoutTheme {
   collapsed: boolean
 }
 
-export const layoutThemeConfig: layoutTheme = {
+export const layoutThemeConfig: ILayoutTheme = {
   title: 'Naive Admin Pro',
   layout: 'mix',
+  layoutStyle: 'light',
   headerHeight: 48,
   logo,
   siderWidth: 240,
