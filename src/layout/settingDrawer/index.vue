@@ -1,21 +1,25 @@
 <script setup lang="ts">
 import { CloseOutlined, SettingOutlined } from '@vicons/antd'
 import CheckboxLayout from './checkboxLayout.vue'
+import CheckboxTheme from './checkboxTheme.vue'
 import Container from './container.vue'
 import type { ILayoutType } from '@/config/layout-theme'
+import type { ITheme } from '@/config/theme'
 
 const props = withDefaults(defineProps<{
   floatTop?: number | string
   drawerWidth?: number | string
   layout?: 'mix' | 'side' | 'top'
-  layoutStyle?: 'dark' | 'light'
+  layoutStyle?: 'inverted' | 'light' | 'dark'
   layoutList: ILayoutType[]
   layoutStyleList: ILayoutType[]
+  themeList?: ITheme[]
+  theme: string
 }>(), {
   floatTop: 240,
   drawerWidth: 300,
 })
-defineEmits(['update:layout', 'update:layoutStyle'])
+defineEmits(['update:layout', 'update:layoutStyle', 'update:theme'])
 
 let showRef = $ref(false)
 
@@ -58,11 +62,25 @@ const cssVars = computed(() => {
               :checked="item.id === layoutStyle"
               :title="item.title"
               :inverted="item.inverted"
+              :dark="item.dark"
               @click="() => $emit('update:layoutStyle', item.id)"
             />
           </template>
         </n-space>
       </Container>
+      <n-divider />
+      <Container v-if="themeList" title="主题色配置">
+        <n-space>
+          <CheckboxTheme
+            v-for="item in themeList"
+            :key="item.key"
+            :color="item.color"
+            :checked="item.key === theme"
+            @click="() => $emit('update:theme', item.key)"
+          />
+        </n-space>
+      </Container>
+      <n-divider />
       <Container v-if="layoutList" title="导航模式">
         <n-space size="large">
           <template v-for="item in layoutList" :key="item.key">

@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import CheckboxLayout from '@/layout/settingDrawer/checkboxLayout.vue'
+const appStore = useAppStore()
+const onSwitch = (theme: any) => {
+  if (theme === 'dark')
+    document.documentElement.className = 'dark'
+
+  else
+    document.documentElement.removeAttribute('class')
+
+  appStore.updateLayoutStyle(theme)
+}
 </script>
 
 <template>
   <div>
     <n-space>
-      <CheckboxLayout layout="mix" checked />
-      <CheckboxLayout layout="top" />
-      <CheckboxLayout layout="side" />
-      <CheckboxLayout layout="side" inverted />
+      <n-button @click="onSwitch('light')">
+        浅色
+      </n-button>
+      <n-button @click="onSwitch('dark')">
+        深色
+      </n-button>
     </n-space>
   </div>
 </template>

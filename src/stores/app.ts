@@ -1,6 +1,9 @@
+import { darkTheme } from '@/config/appTheme.ts'
 import { useLayoutTheme } from '@/composables/layout-theme'
 import type { ILayoutTheme, ILayoutType } from '@/config/layout-theme'
 import { layoutThemeConfig } from '@/config/layout-theme'
+import type { ITheme } from '@/config/theme'
+import { colors, darkColors } from '@/config/theme'
 
 export const useAppStore = defineStore('app', () => {
   const defaultTheme = import.meta.env.DEV ? layoutThemeConfig : useLayoutTheme()
@@ -16,6 +19,17 @@ export const useAppStore = defineStore('app', () => {
   const updateLayoutStyle = (val: ILayoutTheme['layoutStyle']) => {
     layout.layoutStyle = val
   }
+  const updateTheme = (val: string) => {
+    layout.theme = val
+  }
+
+  watch(() => layout.layoutStyle, (val) => {
+    if (val === 'dark')
+      toggleDark(true)
+
+    else
+      toggleDark(false)
+  })
 
   const layoutList = computed<ILayoutType[]>(() => {
     return [{
@@ -37,15 +51,45 @@ export const useAppStore = defineStore('app', () => {
     }]
     if (layout.layout !== 'mix') {
       list.push({
-        id: 'dark',
+        id: 'inverted',
         key: 'side',
         inverted: true,
-        title: '暗色风格',
+        title: '反转色风格',
       })
     }
     else {
-      updateLayoutStyle('light')
+      if (layout.layoutStyle !== 'dark')
+        updateLayoutStyle('light')
     }
+    list.push({
+      id: 'dark',
+      key: 'side',
+      title: '暗色风格',
+      dark: true,
+    })
+    return list
+  })
+  const layoutTheme = computed(() => {
+    if (layout.layoutStyle === 'dark')
+      return darkTheme
+
+    return undefined
+  })
+  const overridesTheme = computed(() => {
+    if (isDark.value)
+      return darkColors[layout.theme]
+
+    return colors[layout.theme]
+  })
+  const themeList = computed(() => {
+    const list: ITheme[] = []
+    const myColors = isDark.value ? darkColors : colors
+    Object.keys(myColors).forEach((item) => {
+      list.push({
+        color: myColors[item]?.common?.primaryColor as string,
+        key: item,
+      })
+    })
     return list
   })
 
@@ -54,9 +98,13 @@ export const useAppStore = defineStore('app', () => {
     visible,
     layoutList,
     layoutStyleList,
+    layoutTheme,
+    overridesTheme,
+    themeList,
     toggleVisible,
     toggleCollapsed,
     updateLayout,
     updateLayoutStyle,
+    updateTheme,
   }
 })

@@ -1,4 +1,13 @@
 html {
   --pro-admin-layout-content-bg: #f0f2f5;
-  --pro-admin-layout-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .18)
+  --pro-admin-layout-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .18);
+  --pro-admin-layout-shadow-sider: 2px 0 8px 0 rgb(29 35 41 / 5%);  
+  --pro-admin-layout-shadow-header: 0 1px 4px rgb(0 21 41 / 8%);
+}
+
+html.dark {
+  --pro-admin-layout-content-bg: #2A2C2C;
+  --pro-admin-layout-box-shadow: 0 1px 3px 0 rgba(13, 13, 13, .18);
+  --pro-admin-layout-shadow-sider: rgba(13, 13, 13, 0.65) 0px 2px 8px 0px;
+  --pro-admin-layout-shadow-header: rgb(13 13 13 / 65%) 0px 2px 8px 0px;
 }

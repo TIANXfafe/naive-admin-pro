@@ -6,7 +6,7 @@ import MobileLayout from '../mobileLayout/index.vue'
 import SettingDrawer from '../settingDrawer/index.vue'
 
 const appStore = useAppStore()
-const { layout, visible, layoutList, layoutStyleList } = storeToRefs(appStore)
+const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
 const { isMobile, isPad, isDesktop } = useQueryBreakpoints()
 
 watchEffect(() => {
@@ -29,6 +29,7 @@ watchEffect(() => {
     <template #headerRight>
       <div>右侧</div>
     </template>
+    <router-view />
   </MobileLayout>
   <template v-else>
     <MixLayout
@@ -54,27 +55,31 @@ watchEffect(() => {
       :sider-width="layout.siderWidth"
       :sider-collapsed-width="layout.siderCollapsedWidth"
       :show-sider-trigger="layout.showSiderTrigger"
-      :inverted="layout.layoutStyle === 'dark'"
+      :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
         <div>右侧</div>
       </template>
+      <router-view />
     </SideLayout>
     <TopLayout
       v-else-if="layout.layout === 'top'"
       :logo="layout.logo"
       :title="layout.title"
-      :inverted="layout.layoutStyle === 'dark'"
+      :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
         <div>右侧</div>
       </template>
+      <router-view />
     </TopLayout>
   </template>
   <SettingDrawer
     v-model:layout="layout.layout"
     v-model:layout-style="layout.layoutStyle"
+    v-model:theme="layout.theme"
     :layout-list="layoutList"
     :layout-style-list="layoutStyleList"
+    :theme-list="themeList"
   />
 </template>

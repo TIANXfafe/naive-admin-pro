@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MenuUnfoldOutlined } from '@vicons/antd'
-import { Layout, LayoutContent, Logo, Title } from '@/layout/common'
+import { Layout, LayoutContent, LayoutHeader, Logo, Title } from '@/layout/common'
 
 const props = withDefaults(defineProps<{
   headerHeight?: number
@@ -28,7 +28,7 @@ const onShow = () => {
 
 <template>
   <Layout class="h-screen">
-    <n-layout-header :inverte="headerInverted" class="pro-admin-mix-layout-header flex items-center px-4 justify-between">
+    <LayoutHeader :inverte="headerInverted" class="pro-admin-mix-layout-header flex items-center px-4 justify-between">
       <div class="flex items-center">
         <n-icon size="24" class="mr-12px" @click="onShow">
           <MenuUnfoldOutlined />
@@ -38,7 +38,7 @@ const onShow = () => {
       <div>
         <slot name="headerRight" />
       </div>
-    </n-layout-header>
+    </LayoutHeader>
     <LayoutContent content-style="padding: 24px;">
       <slot />
     </LayoutContent>

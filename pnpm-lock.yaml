@@ -21,6 +21,9 @@ devDependencies:
   '@mistjs/eslint-config-vue':
     specifier: ^0.0.5
     version: registry.npmmirror.com/@mistjs/eslint-config-vue@0.0.5(eslint@8.48.0)(typescript@5.0.2)
+  '@types/lodash-es':
+    specifier: ^4.17.9
+    version: registry.npmmirror.com/@types/lodash-es@4.17.9
   '@types/node':
     specifier: ^20.5.9
     version: registry.npmmirror.com/@types/node@20.5.9
@@ -45,6 +48,9 @@ devDependencies:
   lint-staged:
     specifier: ^14.0.1
     version: registry.npmmirror.com/lint-staged@14.0.1
+  lodash-es:
+    specifier: ^4.17.21
+    version: registry.npmmirror.com/lodash-es@4.17.21
   naive-ui:
     specifier: ^2.34.4
     version: registry.npmmirror.com/naive-ui@2.34.4(vue@3.3.4)

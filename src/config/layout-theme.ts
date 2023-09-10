@@ -5,18 +5,20 @@ export interface ILayoutType {
   key: 'mix' | 'side' | 'top'
   title: string
   inverted?: boolean
+  dark?: boolean
 }
 
 export interface ILayoutTheme {
   title?: string
   layout: 'mix' | 'side' | 'top'
-  layoutStyle: 'light' | 'dark'
+  layoutStyle: 'light' | 'dark' | 'inverted'
   headerHeight: number
   logo?: string
   siderWidth: number
   siderCollapsedWidth: number
   showSiderTrigger: boolean | 'bar' | 'arrow-circle'
   collapsed: boolean
+  theme: string
 }
 
 export const layoutThemeConfig: ILayoutTheme = {
@@ -29,4 +31,5 @@ export const layoutThemeConfig: ILayoutTheme = {
   siderCollapsedWidth: 48,
   showSiderTrigger: 'arrow-circle',
   collapsed: false,
+  theme: 'default',
 }

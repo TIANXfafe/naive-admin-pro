@@ -6,6 +6,7 @@ const props = withDefaults(defineProps<{
   layout?: 'mix' | 'side' | 'top'
   inverted?: boolean
   checked?: boolean
+  dark?: boolean
   title?: string | (() => VNodeChild)
 }>(), {
   layout: 'side',
@@ -15,7 +16,7 @@ const props = withDefaults(defineProps<{
 defineEmits(['click'])
 
 const headerClsss = computed(() => {
-  if (props.layout === 'mix' || props.layout === 'top') {
+  if (props.layout === 'mix' || props.layout === 'top' || props.dark) {
     return [
       'bg-[var(--inverted-color)]',
     ]
@@ -39,7 +40,7 @@ const sideClsss = computed(() => {
   if (props.layout === 'side') {
     return [
       'h-100%',
-      `bg-[var(--${props.inverted ? 'inverted' : 'base'}-color)]`,
+      `bg-[var(--${(props.inverted || props.dark) ? 'inverted' : 'base'}-color)]`,
     ]
   }
   return []

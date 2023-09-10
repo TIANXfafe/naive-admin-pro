@@ -1,0 +1,7 @@
+.pro-admin-layout-header {
+  box-shadow: var(--pro-admin-layout-shadow-header);
+}
+
+.pro-admin-layout-sider {
+  box-shadow: var(--pro-admin-layout-shadow-sider);
+}
