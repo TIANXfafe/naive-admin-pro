@@ -20,4 +20,6 @@ export default {
   'login.sign-in-with': 'Sign in with:',
   'login.signup': 'Sign up',
   'login.login': 'Login',
+  'login.mobile.verification-code.success': 'Verification code sent successfully!',
+  'login.mobile.verification-code.loading': 'Sending verification code...',
 }

@@ -1,4 +1,5 @@
 import { usePost } from '@/utils/request'
+import type { TIncludeNull } from '@/utils/types'
 
 export interface IUserInfo {
   id: string
@@ -12,24 +13,34 @@ export interface IUserInfo {
   birth?: string
 }
 
-export const userLoginUrl = '/user/login'
-
 export interface IUserAccountLoginParams {
-  username: string
-  password: string
-  captcha?: string
+  username: TIncludeNull<string>
+  password: TIncludeNull<string>
+  captcha?: TIncludeNull<string>
+  rememberMe?: TIncludeNull<boolean>
 }
 
 export interface IUserMobileLoginParams {
-  mobile: string
-  code: string
+  mobile: TIncludeNull<string>
+  code: TIncludeNull<string>
   type: 'mobile'
+  rememberMe?: TIncludeNull<boolean>
 }
 
 export interface IUserLoginResult {
   token: string
 }
 
+export const userLoginUrl = '/user/login'
+
 export const userLoginApi = (params: IUserAccountLoginParams | IUserMobileLoginParams) => {
   return usePost<IUserAccountLoginParams | IUserMobileLoginParams, IUserLoginResult>(userLoginUrl, params)
+}
+
+export type TUserSendCodeParams = Pick<IUserMobileLoginParams, 'mobile'>
+
+export const userSendCodeUrl = '/user/send-code'
+
+export const userSendCodeApi = (params: TUserSendCodeParams) => {
+  return usePost<TUserSendCodeParams, any>(userSendCodeUrl, params)
 }

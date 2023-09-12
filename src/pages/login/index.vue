@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { GithubOutlined, LockOutlined, MobileOutlined, UserOutlined } from '@vicons/antd'
+import { useAccountLogin } from './composables/accountLogin'
+import { useMobileLogin } from './composables/mobileLogin'
 import { BlankLayout } from '@/layout'
 
-const userStore = useUserStore()
-const onLogin = async () => {
-  await userStore.login({
-    username: '',
-    password: '',
-  })
-}
+const { formRef, loading, model, rules, login } = useAccountLogin()
+const { counter, counterState, mFormRef, mLoading, mModel, mRules, mLogin, sendCode } = useMobileLogin()
 </script>
 
 <template>
@@ -29,16 +26,17 @@ const onLogin = async () => {
         type="line"
       >
         <n-tab-pane name="account" :tab="$t('login.account.tab')">
-          <n-form label-align="left" label-placement="left">
-            <n-form-item-row>
-              <n-input :placeholder="$t('login.username.placeholder')">
+          <n-form ref="formRef" :model="model" :rules="rules" label-align="left" label-placement="left">
+            <n-form-item-row path="username">
+              <n-input v-model:value="model.username" :placeholder="$t('login.username.placeholder')">
                 <template #prefix>
                   <n-icon :component="UserOutlined" />
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="password">
               <n-input
+                v-model:value="model.password"
                 :placeholder="$t('login.password.placeholder')"
                 type="password"
                 show-password-on="click"
@@ -48,50 +46,54 @@ const onLogin = async () => {
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="rememberMe">
               <div class="w-100% flex items-center justify-between">
-                <n-checkbox>{{ $t('login.remember-me') }}</n-checkbox>
+                <n-checkbox v-model="model.rememberMe">
+                  {{ $t('login.remember-me') }}
+                </n-checkbox>
                 <a class="cursor-pointer text[var(--text-color-3)]">
                   {{ $t('login.forgot-password') }}
                 </a>
               </div>
             </n-form-item-row>
           </n-form>
-          <n-button type="primary" block secondary strong @click="onLogin">
+          <n-button type="primary" :loading="loading" block secondary strong @click="login">
             {{ $t('login.login') }}
           </n-button>
         </n-tab-pane>
         <n-tab-pane name="mobile" :tab="$t('login.mobile.tab')">
-          <n-form label-align="left" label-placement="left">
-            <n-form-item-row>
-              <n-input :placeholder="$t('login.mobile.placeholder')">
+          <n-form ref="mFormRef" :model="mModel" :rules="mRules" label-align="left" label-placement="left">
+            <n-form-item-row path="mobile">
+              <n-input v-model:value="mModel.mobile" :placeholder="$t('login.mobile.placeholder')">
                 <template #prefix>
                   <n-icon :component="MobileOutlined" />
                 </template>
               </n-input>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="code">
               <n-input-group>
-                <n-input :placeholder="$t('login.mobile.verification-code.placeholder')">
+                <n-input v-model:value="mModel.code" :placeholder="$t('login.mobile.verification-code.placeholder')">
                   <template #prefix>
                     <n-icon :component="LockOutlined" />
                   </template>
                 </n-input>
-                <n-button>
-                  {{ $t('login.mobile.verification-code.get-verification-code') }}
+                <n-button :disabled="counterState" @click="sendCode">
+                  {{ counterState ? `${counter}s ${$t('login.mobile.resend')}` : $t('login.mobile.verification-code.get-verification-code') }}
                 </n-button>
               </n-input-group>
             </n-form-item-row>
-            <n-form-item-row>
+            <n-form-item-row path="rememberMe">
               <div class="w-100% flex items-center justify-between">
-                <n-checkbox>{{ $t('login.remember-me') }}</n-checkbox>
+                <n-checkbox v-model="mModel.rememberMe">
+                  {{ $t('login.remember-me') }}
+                </n-checkbox>
                 <a class="cursor-pointer text[var(--text-color-3)]">
                   {{ $t('login.forgot-password') }}
                 </a>
               </div>
             </n-form-item-row>
           </n-form>
-          <n-button type="primary" block secondary strong>
+          <n-button type="primary" :loading="mLoading" block secondary strong @click="mLogin">
             {{ $t('login.login') }}
           </n-button>
         </n-tab-pane>

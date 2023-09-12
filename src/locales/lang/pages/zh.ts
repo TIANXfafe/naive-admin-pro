@@ -21,4 +21,6 @@ export default {
   'login.sign-in-with': '其他登录方式：',
   'login.signup': '注册账户',
   'login.login': '登录',
+  'login.mobile.verification-code.success': '验证码发送成功！',
+  'login.mobile.verification-code.loading': '验证码发送中...',
 }
