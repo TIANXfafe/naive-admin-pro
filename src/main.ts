@@ -6,6 +6,7 @@ import 'uno.css'
 import router from '@/router'
 import '@/assets/styles/index.css'
 import i18n from '@/locales'
+import '@/router/routerGuard'
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
