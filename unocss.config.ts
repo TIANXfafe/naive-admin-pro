@@ -7,6 +7,7 @@ export default defineConfig({
     'h-75%',
     'h-100%',
     'bottom-0',
+    'op-40',
   ],
   shortcuts: [],
   presets: [
