@@ -33,6 +33,8 @@ export const useAutoLang = () => {
       await setLanguage(lang)
   })
 
+  setLanguage(appLocale.value).then(() => {})
+
   const naiveLocale = computed(() => getLocaleMessage(appLocale.value).naiveUI || {})
   return naiveLocale
 }

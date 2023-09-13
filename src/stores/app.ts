@@ -1,3 +1,4 @@
+import type { DropdownOption } from 'naive-ui'
 import { darkTheme } from '@/config/appTheme.ts'
 import { useLayoutTheme } from '@/composables/layout-theme'
 import type { ILayoutTheme, ILayoutType } from '@/config/layout-theme'
@@ -10,6 +11,18 @@ export const useAppStore = defineStore('app', () => {
 
   const layout = reactive(unref(defaultTheme))
   const visible = ref(false)
+  const localeOptions = ref<DropdownOption[]>([
+    {
+      key: 'zh',
+      label: '简体中文',
+      icon: () => '🇨🇳',
+    },
+    {
+      key: 'en',
+      label: 'English',
+      icon: () => '🇺🇸',
+    },
+  ])
 
   const toggleVisible = (val: boolean) => visible.value = val
   const toggleCollapsed = (val: boolean) => layout.collapsed = val
@@ -97,6 +110,7 @@ export const useAppStore = defineStore('app', () => {
   return {
     layout,
     visible,
+    localeOptions,
     layoutList,
     layoutStyleList,
     layoutTheme,

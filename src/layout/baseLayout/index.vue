@@ -4,6 +4,7 @@ import SideLayout from '../sideLayout/index.vue'
 import TopLayout from '../topLayout/index.vue'
 import MobileLayout from '../mobileLayout/index.vue'
 import SettingDrawer from '../settingDrawer/index.vue'
+import RightContent from './rightContent.vue'
 
 const appStore = useAppStore()
 const { layout, visible, layoutList, layoutStyleList, themeList } = storeToRefs(appStore)
@@ -27,7 +28,7 @@ watchEffect(() => {
     :title="layout.title"
   >
     <template #headerRight>
-      <div>右侧</div>
+      <RightContent />
     </template>
     <router-view />
   </MobileLayout>
@@ -42,8 +43,7 @@ watchEffect(() => {
       :show-sider-trigger="layout.showSiderTrigger"
     >
       <template #headerRight>
-        {{ layout.collapsed }}
-        <div>右侧</div>
+        <RightContent />
       </template>
       <router-view />
     </MixLayout>
@@ -58,7 +58,7 @@ watchEffect(() => {
       :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
-        <div>右侧</div>
+        <RightContent />
       </template>
       <router-view />
     </SideLayout>
@@ -69,7 +69,7 @@ watchEffect(() => {
       :inverted="layout.layoutStyle === 'inverted'"
     >
       <template #headerRight>
-        <div>右侧</div>
+        <RightContent />
       </template>
       <router-view />
     </TopLayout>

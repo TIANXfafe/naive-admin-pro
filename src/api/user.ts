@@ -4,6 +4,7 @@ import type { TIncludeNull } from '@/utils/types'
 export interface IUserInfo {
   id: string
   username: string
+  nickname?: string
   email?: string
   mobile?: string
   avatar?: string

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppProvider: typeof import('./../src/components/app-provider/index.vue')['default']
     NaiveProvider: typeof import('./../src/components/app-provider/naiveProvider.vue')['default']
+    NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
@@ -16,6 +17,7 @@ declare module 'vue' {
     NDivider: typeof import('naive-ui')['NDivider']
     NDrawer: typeof import('naive-ui')['NDrawer']
     NDrawerContent: typeof import('naive-ui')['NDrawerContent']
+    NDropdown: typeof import('naive-ui')['NDropdown']
     NEl: typeof import('naive-ui')['NEl']
     NForm: typeof import('naive-ui')['NForm']
     NFormItemRow: typeof import('naive-ui')['NFormItemRow']

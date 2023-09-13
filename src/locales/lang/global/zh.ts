@@ -16,8 +16,13 @@ export default {
   'global.layout.setting.drawer.layout.side': '侧边菜单布局',
   'global.layout.setting.drawer.layout.mix': '混合菜单布局',
   'global.layout.setting.drawer.layout.top': '顶部菜单布局',
-  'global.request.error.401': 'Login Expired',
-  'global.request.error.403': 'Resource Request Error',
-  'global.request.error.500': 'Server Error',
-  'global.request.error.other': 'System Error',
+  'global.request.error.401': '登录过期',
+  'global.request.error.403': '资源请求错误',
+  'global.request.error.500': '服务器错误',
+  'global.request.error.other': '系统错误',
+  'global.layout.header.right.logout': '退出登录',
+  'global.layout.header.right.logout.success': '退出成功',
+  'global.layout.header.right.user.setting': '个人设置',
+  'global.layout.header.right.user.center': '个人中心',
+
 }
